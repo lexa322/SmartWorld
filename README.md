@@ -1,4 +1,4 @@
-# SmartWorld
+# Test task
 ### Steps:
 -  Install [docker](https://docs.docker.com/engine/install/ubuntu/) and [docker-compose](https://docs.docker.com/compose/install/) on        ubuntu
 - Add add user to group
@@ -13,4 +13,13 @@ $ git clone https://github.com/lexa322/SmartWorld.git/
 $ cd ./SmartWorld
 ```
 - Copy folders **www** and **cfg** to home directory
+```sh
+$ cp -r ./cfg ~/
+$ cp -r ./www ~/
+```
+-  Container start
+```sh
+$ docker-compose up -d
+```
 
+**Use a script.sh to work with containers**
