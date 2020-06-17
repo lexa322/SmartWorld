@@ -17,9 +17,9 @@ $ cd ./SmartWorld
 $ cp -r ./cfg ~/
 $ cp -r ./www ~/
 ```
--  Container start
+-  Container start (**Use a script.sh to work with containers**)
 ```sh
-$ docker-compose up -d
+$ ./script.sh
 ```
 
-**Use a script.sh to work with containers**
+
