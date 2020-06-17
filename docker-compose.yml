@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+   
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    restart: always
+    volumes:
+      - $HOME/cfg/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - $HOME/cfg/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - app-network
+
+  db:
+    build: ./db
+    restart: always
+    container_name: db
+    volumes:
+      - $HOME/db:/var/lib/postgresql/data
+
+    environment:
+      POSTGRES_PASSWORD: postgress
+    networks:
+      - app-network
+
+  keydb:
+    build: ./keydb
+    restart: always
+    container_name: keydb
+    ports:
+      - "6379:6379"
+    networks:
+      - app-network
+
+  backend:
+    build: ./backend
+    restart: always
+    container_name: backend
+    volumes:
+      - $HOME/cfg/apache2/apache2.conf:/etc/apache2/apache2.conf
+      - $HOME/cfg/apache2/ports.conf:/etc/apache2/ports.conf
+      - $HOME/cfg/fpm/php-fpm.conf:/etc/php/7.4/fpm/php-fpm.conf
+      - $HOME/cfg/fpm/php.ini:/etc/php/7.4/fpm/php.ini
+      - $HOME/www/:/var/www/html
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
