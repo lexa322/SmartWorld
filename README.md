@@ -11,5 +11,6 @@ $ bash
 $ cd ~
 $ git clone https://github.com/lexa322/SmartWorld.git/
 $ cd ./SmartWorld
-- Copy folders www and cfg to home directory
+```
+- Copy folders **www** and **cfg** to home directory
 
