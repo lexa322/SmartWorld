@@ -1,0 +1,20 @@
+{
+        "listeners": {
+
+                "*:8200": {
+                        "application": "php-app"
+                }
+
+        },
+
+        "applications": {
+                "php-app": {
+                        "type": "php",
+                        "user": "nobody",
+                        "processes": 2,
+                        "root": "/var/www/html",
+                        "index": "index.php"
+                }
+        }
+
+}
